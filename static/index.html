@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAI — Post-AI Startups Platform</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Custom Styling Sheet -->
+  <link rel="stylesheet" href="/style.css">
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen text-slate-100 bg-grid-pattern relative overflow-x-hidden">
+
+  <!-- BACKGROUND GLOWS -->
+  <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-600/5 rounded-full blur-[128px] pointer-events-none"></div>
+  <div class="absolute bottom-10 left-1/4 w-96 h-96 bg-teal-600/5 rounded-full blur-[128px] pointer-events-none"></div>
+
+  <!-- NOTIFICATION BANNER CONTAINER -->
+  <div id="alert-container" class="fixed top-6 right-6 z-50 space-y-3 w-full max-w-sm pointer-events-none"></div>
+
+  <!-- ── 1. LANDING PAGE VIEW ── -->
+  <div id="view-landing" class="view-panel hidden">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-slate-950/80 border-b border-slate-900">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="navigate('/')">
+          <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
+            PAI<span class="text-amber-400">.</span>
+          </span>
+          <span class="text-[9px] font-bold text-teal-400 bg-teal-950/80 px-2 py-0.5 rounded-full uppercase border border-teal-900">
+            Trust Loop
+          </span>
+        </div>
+        <nav class="hidden md:flex items-center gap-8 text-xs font-bold text-slate-400">
+          <a href="#roles" class="hover:text-slate-100 transition-colors">Ecosystem Roles</a>
+          <a href="#features" class="hover:text-slate-100 transition-colors">Features</a>
+          <a href="#billing" class="hover:text-slate-100 transition-colors">Pricing</a>
+        </nav>
+        <button onclick="navigate('/onboarding')" class="px-5 py-2.5 text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 rounded-full transition-all hover:scale-105 shadow-md shadow-amber-400/20">
+          Get Started
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative pt-24 pb-20 px-6">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-16 items-center">
+        <div class="lg:col-span-7 text-center lg:text-left">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-bold bg-purple-950/80 border border-purple-800/50 text-purple-300 mb-6 uppercase tracking-wide">
+            🇮🇳 India&apos;s First Post-AI Startup Network
+          </span>
+          <h1 class="text-5xl md:text-6xl font-black tracking-tight leading-[1.08] mb-6 text-white">
+            Protect. Connect.<br />
+            <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
+              Fund with Confidence.
+            </span>
+          </h1>
+          <p class="text-base text-slate-400 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+            PAI establishes an immutable digital trust chain. Timestamp your original startup plan under cryptographic proof, optimize presentation with local AI scoring, and unlock investments from verified VCs.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <button onclick="navigate('/onboarding?role=pitcher')" class="w-full sm:w-auto px-8 py-4 font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 rounded-full transition-all flex items-center justify-center gap-2 hover:-translate-y-0.5 shadow-lg shadow-amber-400/20">
+              Register Pitch Free <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            <button onclick="navigate('/onboarding?role=fetcher')" class="w-full sm:w-auto px-8 py-4 font-semibold text-slate-100 bg-slate-900/80 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-full transition-all flex items-center justify-center gap-2">
+              Explore Deal Flow
+            </button>
+          </div>
+          <!-- Stats Grid -->
+          <div class="grid grid-cols-3 gap-6 mt-16 max-w-md mx-auto lg:mx-0">
+            <div>
+              <div class="text-2xl font-black text-white">SHA-256</div>
+              <div class="text-[9px] text-slate-500 font-bold uppercase tracking-wider mt-1">IP Vault Proof</div>
+            </div>
+            <div class="border-l border-slate-900 pl-6">
+              <div class="text-2xl font-black text-white">100%</div>
+              <div class="text-[9px] text-slate-500 font-bold uppercase tracking-wider mt-1">Verified Funds</div>
+            </div>
+            <div class="border-l border-slate-900 pl-6">
+              <div class="text-2xl font-black text-white">₹10k–2.5L</div>
+              <div class="text-[9px] text-slate-500 font-bold uppercase tracking-wider mt-1">Check Sizes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 relative">
+          <div class="relative p-8 rounded-3xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-xl shadow-2xl">
+            <div class="absolute -top-4 -right-4 w-12 h-12 bg-purple-500/20 rounded-full blur-xl animate-pulse"></div>
+            <h3 class="font-extrabold text-lg text-white mb-6 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 bg-teal-400 rounded-full animate-pulse"></span>
+              How the Trust Loop Operates
+            </h3>
+            <div class="space-y-6">
+              <div class="flex gap-4 items-start">
+                <div class="w-8 h-8 rounded-full bg-slate-800 text-xs font-black flex items-center justify-center text-teal-300">01</div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-100">Access Verification</h4>
+                  <p class="text-xs text-slate-400 mt-1 leading-relaxed">Fast, passwordless login using dynamic OTP codes mapped securely.</p>
+                </div>
+              </div>
+              <div class="flex gap-4 items-start">
+                <div class="w-8 h-8 rounded-full bg-slate-800 text-xs font-black flex items-center justify-center text-teal-300">02</div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-100">Cryptographic Vaulting</h4>
+                  <p class="text-xs text-slate-400 mt-1 leading-relaxed">Lock startup blueprints. Hash contents instantly to establish priority proof.</p>
+                </div>
+              </div>
+              <div class="flex gap-4 items-start">
+                <div class="w-8 h-8 rounded-full bg-slate-800 text-xs font-black flex items-center justify-center text-teal-300">03</div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-100">Asset Acquisitions</h4>
+                  <p class="text-xs text-slate-400 mt-1 leading-relaxed">Investors discover redacted ideas. Spend ledger credits to unlock direct chat rooms.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roles Section -->
+    <section id="roles" class="py-24 border-t border-slate-900 bg-slate-950/40 relative">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-20">
+          <span class="text-xs font-extrabold tracking-wider text-teal-400 uppercase">Dual-Intent Ecosystem</span>
+          <h2 class="text-4xl font-black mt-2 text-white">Choose Your Operational Channel</h2>
+          <p class="text-slate-400 mt-4 leading-relaxed text-xs">PAI separates workspace dashboards to protect founder IP while enabling investor deals flow.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <!-- Pitcher -->
+          <div class="rounded-3xl p-10 bg-gradient-to-b from-purple-950/20 to-slate-950 border border-purple-900/40 flex flex-col justify-between hover:border-purple-500/20 transition-all">
+            <div>
+              <div class="w-12 h-12 bg-purple-950 border border-purple-800 rounded-2xl flex items-center justify-center text-2xl mb-8">🚀</div>
+              <h3 class="text-2xl font-black text-purple-200">Pitcher Workspace</h3>
+              <p class="text-xs text-slate-500 mt-1">For Founders & Product Architects</p>
+              <ul class="mt-8 space-y-4 text-xs text-slate-300">
+                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Secure timestamped proof-of-concept vaults</li>
+                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> AI-powered feasibility grading & gap checklists</li>
+                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Direct communication channels with verified investors</li>
+              </ul>
+            </div>
+            <button onclick="navigate('/onboarding?role=pitcher')" class="mt-10 w-full py-3.5 font-bold text-center text-slate-950 bg-purple-400 hover:bg-purple-300 rounded-full transition-all">
+              Join as Pitcher
+            </button>
+          </div>
+          <!-- Fetcher -->
+          <div class="rounded-3xl p-10 bg-gradient-to-b from-teal-950/20 to-slate-950 border border-teal-900/40 flex flex-col justify-between hover:border-teal-500/20 transition-all">
+            <div>
+              <div class="w-12 h-12 bg-teal-950 border border-teal-800 rounded-2xl flex items-center justify-center text-2xl mb-8">🔍</div>
+              <h3 class="text-2xl font-black text-teal-200">Fetcher Workspace</h3>
+              <p class="text-xs text-slate-500 mt-1">For VCs, Angels, and Acquisitions</p>
+              <ul class="mt-8 space-y-4 text-xs text-slate-300">
+                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400"></i> Advanced directory lookup (stages & sectors filters)</li>
+                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400"></i> Spend ledger credits to unlock primary pitch vaults</li>
+                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400"></i> Failed Startup Asset Recovery list (reusable repos)</li>
+              </ul>
+            </div>
+            <button onclick="navigate('/onboarding?role=fetcher')" class="mt-10 w-full py-3.5 font-bold text-center text-slate-950 bg-teal-400 hover:bg-teal-300 rounded-full transition-all">
+              Join as Fetcher
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-900 text-center text-xs text-slate-600 bg-slate-950">
+      PAI platform built with Python FastAPI & SQLite · Secured under SHA-256 standard protocols.
+    </footer>
+  </div>
+
+  <!-- ── 2. ONBOARDING VIEW ── -->
+  <div id="view-onboarding" class="view-panel hidden min-h-screen flex flex-col justify-between">
+    <!-- Navbar -->
+    <header class="h-20 border-b border-slate-900 flex items-center justify-between px-6 bg-slate-950/80 backdrop-blur-md">
+      <div class="flex items-center gap-2 cursor-pointer" onclick="navigate('/')">
+        <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">PAI.</span>
+      </div>
+      <button onclick="navigate('/')" class="text-xs font-bold text-slate-400 hover:text-slate-200 flex items-center gap-2">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home
+      </button>
+    </header>
+
+    <!-- Wizard Core -->
+    <main class="flex-1 flex items-center justify-center p-6 my-10">
+      <div class="w-full max-w-lg p-10 rounded-3xl bg-slate-900/40 border border-slate-900 backdrop-blur-xl shadow-2xl relative animate-fadeUp">
+        
+        <!-- Steps Progress Bar -->
+        <div id="onboarding-steps-indicator" class="flex items-center justify-between mb-10 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Onboarding Wizard Inner Sections -->
+        <div id="onboarding-form-container">
+          <!-- Step Forms populated dynamically via JS -->
+        </div>
+      </div>
+    </main>
+
+    <footer class="py-6 border-t border-slate-900 text-center text-[10px] text-slate-600 bg-slate-950">
+      PAI Trust Loop · Secured under AES & SHA-256 standard protocols
+    </footer>
+  </div>
+
+  <!-- ── 3. PITCHER DASHBOARD VIEW ── -->
+  <div id="view-pitcher" class="view-panel hidden min-h-screen flex flex-col md:flex-row">
+    <!-- Sidebar -->
+    <aside class="w-full md:w-64 bg-slate-950 border-b md:border-b-0 md:border-r border-slate-900 flex flex-row md:flex-col justify-between flex-shrink-0 p-4 md:p-6">
+      <div class="flex flex-row md:flex-col items-center md:items-start justify-between md:justify-start w-full md:h-full gap-4 md:gap-8">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="navigate('/')">
+          <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-amber-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">PAI.</span>
+          <span class="text-[9px] font-bold text-purple-400 bg-purple-950/80 px-2 py-0.5 rounded-full uppercase border border-purple-900">Founder</span>
+        </div>
+        
+        <div class="hidden md:block w-full p-4 rounded-2xl bg-slate-900/50 border border-slate-900">
+          <div class="text-[9px] text-slate-500 font-bold uppercase tracking-wider">Active Pitcher</div>
+          <div id="pitcher-email" class="text-xs font-semibold text-slate-200 truncate mt-1">founder@test.com</div>
+          <div class="flex items-center gap-2 mt-4 text-amber-400 font-bold text-xs bg-amber-950/40 border border-amber-900/50 p-2 rounded-xl">
+            <i data-lucide="coins" class="w-4 h-4 text-amber-400"></i>
+            <span id="pitcher-credits-side">50 Credits</span>
+          </div>
+        </div>
+
+        <nav class="flex flex-row md:flex-col overflow-x-auto md:overflow-visible gap-1.5 w-full scrollbar-none py-1 md:py-0">
+          <button onclick="switchTab('OVERVIEW')" class="nav-item-btn px-3 py-2 md:px-4 md:py-3 text-[11px] md:text-xs font-bold rounded-xl flex items-center gap-2 whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-900/50" data-tab="OVERVIEW">
+            <i data-lucide="bar-chart-3" class="w-4 h-4"></i> <span class="hidden sm:inline md:inline">Overview</span>
+          </button>
+          <button onclick="switchTab('REGISTER')" class="nav-item-btn px-3 py-2 md:px-4 md:py-3 text-[11px] md:text-xs font-bold rounded-xl flex items-center gap-2 whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-900/50" data-tab="REGISTER">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i> <span class="hidden sm:inline md:inline">Vault IP</span>
+          </button>
+          <button onclick="switchTab('PITCHES')" class="nav-item-btn px-3 py-2 md:px-4 md:py-3 text-[11px] md:text-xs font-bold rounded-xl flex items-center gap-2 whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-900/50" data-tab="PITCHES">
+            <i data-lucide="layout-grid" class="w-4 h-4"></i> <span class="hidden sm:inline md:inline">My Pitches</span>
+          </button>
+          <button onclick="switchTab('AI_COACH')" class="nav-item-btn px-3 py-2 md:px-4 md:py-3 text-[11px] md:text-xs font-bold rounded-xl flex items-center gap-2 whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-900/50" data-tab="AI_COACH">
+            <i data-lucide="cpu" class="w-4 h-4"></i> <span class="hidden sm:inline md:inline">AI Coach</span>
+          </button>
+          <button onclick="switchTab('MESSAGES')" class="nav-item-btn px-3 py-2 md:px-4 md:py-3 text-[11px] md:text-xs font-bold rounded-xl flex items-center gap-2 whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-900/50" data-tab="MESSAGES">
+            <i data-lucide="message-square" class="w-4 h-4"></i> <span class="hidden sm:inline md:inline">Deals Chat</span>
+          </button>
+          <button onclick="switchTab('BILLING')" class="nav-item-btn px-3 py-2 md:px-4 md:py-3 text-[11px] md:text-xs font-bold rounded-xl flex items-center gap-2 whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-900/50" data-tab="BILLING">
+            <i data-lucide="credit-card" class="w-4 h-4"></i> <span class="hidden sm:inline md:inline">Recharge</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="hidden md:block p-6 border-t border-slate-900">
+        <button onclick="logout()" class="w-full px-4 py-3 text-xs font-bold text-slate-500 hover:text-slate-200 rounded-xl hover:bg-slate-900/50 flex items-center gap-3">
+          <i data-lucide="log-out" class="w-4 h-4"></i> Close Session
+        </button>
+      </div>
+    </aside>
+
+    <!-- Workspace Main -->
+    <main class="flex-1 bg-slate-950 p-6 md:p-10 max-h-screen overflow-y-auto relative">
+      <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-600/5 rounded-full blur-[128px] pointer-events-none"></div>
+      <div class="max-w-5xl mx-auto w-full space-y-10" id="pitcher-workspace-container">
+        <!-- Rendered dynamically inside JS -->
+      </div>
+    </main>
+  </div>
+
+  <!-- ── 4. FETCHER DASHBOARD VIEW ── -->
+  <div id="view-fetcher" class="view-panel hidden min-h-screen flex flex-col md:flex-row">
+    <!-- Sidebar -->
+    <aside class="w-full md:w-64 bg-slate-950 border-b md:border-b-0 md:border-r border-slate-900 flex flex-row md:flex-col justify-between flex-shrink-0 p-4 md:p-6">
+      <div class="flex flex-row md:flex-col items-center md:items-start justify-between md:justify-start w-full md:h-full gap-4 md:gap-8">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="navigate('/')">
+          <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-amber-400 via-teal-400 to-purple-400 bg-clip-text text-transparent">PAI.</span>
+          <span class="text-[9px] font-bold text-teal-400 bg-teal-950/80 px-2 py-0.5 rounded-full uppercase border border-teal-900">Investor</span>
+        </div>
+        
+        <div class="hidden md:block w-full p-4 rounded-2xl bg-slate-900/50 border border-slate-900">
+          <div class="text-[9px] text-slate-500 font-bold uppercase tracking-wider">Active Fetcher</div>
+          <div id="fetcher-email" class="text-xs font-semibold text-slate-200 truncate mt-1">investor@test.com</div>
+          <div class="flex items-center gap-2 mt-4 text-teal-400 font-bold text-xs bg-teal-950/40 border border-teal-900/50 p-2 rounded-xl">
+            <i data-lucide="coins" class="w-4 h-4 text-teal-400"></i>
+            <span id="fetcher-credits-side">50 Credits</span>
+          </div>
+        </div>
+
+        <nav class="flex flex-row md:flex-col overflow-x-auto md:overflow-visible gap-1.5 w-full scrollbar-none py-1 md:py-0">
+          <button onclick="switchTab('OVERVIEW')" class="nav-item-btn px-3 py-2 md:px-4 md:py-3 text-[11px] md:text-xs font-bold rounded-xl flex items-center gap-2 whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-900/50" data-tab="OVERVIEW">
+            <i data-lucide="bar-chart-3" class="w-4 h-4"></i> <span class="hidden sm:inline md:inline">Overview</span>
+          </button>
+          <button onclick="switchTab('DISCOVER')" class="nav-item-btn px-3 py-2 md:px-4 md:py-3 text-[11px] md:text-xs font-bold rounded-xl flex items-center gap-2 whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-900/50" data-tab="DISCOVER">
+            <i data-lucide="search" class="w-4 h-4"></i> <span class="hidden sm:inline md:inline">Discover Flow</span>
+          </button>
+          <button onclick="switchTab('WATCHLIST')" class="nav-item-btn px-3 py-2 md:px-4 md:py-3 text-[11px] md:text-xs font-bold rounded-xl flex items-center gap-2 whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-900/50" data-tab="WATCHLIST">
+            <i data-lucide="star" class="w-4 h-4"></i> <span class="hidden sm:inline md:inline">My Watchlist</span>
+          </button>
+          <button onclick="switchTab('INSIGHTS')" class="nav-item-btn px-3 py-2 md:px-4 md:py-3 text-[11px] md:text-xs font-bold rounded-xl flex items-center gap-2 whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-900/50" data-tab="INSIGHTS">
+            <i data-lucide="trending-up" class="w-4 h-4"></i> <span class="hidden sm:inline md:inline">Market Insights</span>
+          </button>
+          <button onclick="switchTab('MESSAGES')" class="nav-item-btn px-3 py-2 md:px-4 md:py-3 text-[11px] md:text-xs font-bold rounded-xl flex items-center gap-2 whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-900/50" data-tab="MESSAGES">
+            <i data-lucide="message-square" class="w-4 h-4"></i> <span class="hidden sm:inline md:inline">Deals Chat</span>
+          </button>
+          <button onclick="switchTab('BILLING')" class="nav-item-btn px-3 py-2 md:px-4 md:py-3 text-[11px] md:text-xs font-bold rounded-xl flex items-center gap-2 whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-900/50" data-tab="BILLING">
+            <i data-lucide="credit-card" class="w-4 h-4"></i> <span class="hidden sm:inline md:inline">Recharge</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="hidden md:block p-6 border-t border-slate-900">
+        <button onclick="logout()" class="w-full px-4 py-3 text-xs font-bold text-slate-500 hover:text-slate-200 rounded-xl hover:bg-slate-900/50 flex items-center gap-3">
+          <i data-lucide="log-out" class="w-4.5 h-4.5"></i> Close Session
+        </button>
+      </div>
+    </aside>
+
+    <!-- Workspace Main -->
+    <main class="flex-1 bg-slate-950 p-6 md:p-10 max-h-screen overflow-y-auto relative">
+      <div class="absolute top-0 right-1/4 w-96 h-96 bg-teal-600/5 rounded-full blur-[128px] pointer-events-none"></div>
+      <div class="max-w-5xl mx-auto w-full space-y-10" id="fetcher-workspace-container">
+        <!-- Rendered dynamically inside JS -->
+      </div>
+    </main>
+  </div>
+
+  <!-- ── DETAIL MODAL (Locked / Unlocked Pitcher Preview) ── -->
+  <div id="startup-detail-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-6 hidden">
+    <!-- Populated dynamically via JS -->
+  </div>
+
+  <!-- ── SIMULATED RECHARGE PAYMENT CHECKOUT MODAL ── -->
+  <div id="checkout-payment-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-6 hidden">
+    <!-- Populated dynamically via JS -->
+  </div>
+
+  <!-- ── APPLICATION SCRIPT (Router & API Actions) ── -->
+  <script>
+    // State Variables
+    let user = null;
+    let startups = [];
+    let conversations = [];
+    let activeThreadId = null;
+    let messages = [];
+    let selectedStartup = null;
+    
+    // Onboarding Step tracking states
+    let onboardingStep = 'EMAIL'; // EMAIL, OTP, ROLE, COMPLIANCE
+    let onboardingEmailInput = '';
+    let onboardingOtpInput = ['', '', '', ''];
+    let onboardingRoleInput = 'PITCHER';
+    let onboardingAcceptedTC = false;
+    let onboardingDevOtp = '';
+    
+    // Tab and filter states
+    let activeTab = 'OVERVIEW';
+    let filterSector = 'All sectors';
+    let filterStage = 'All stages';
+    let searchKeyword = '';
+    let loadingAction = false;
+    
+    // Message send input text
+    let activeNewMsgText = '';
+
+    // Alert helper
+    function pushAlert(msg, type = "success") {
+      const container = document.getElementById("alert-container");
+      const id = "alert-" + Date.now();
+      const div = document.createElement("div");
+      div.id = id;
+      div.className = `p-4 rounded-xl text-xs font-bold pointer-events-auto border animate-fadeUp flex items-center gap-2 ${
+        type === "success" 
+          ? "bg-teal-950/90 border-teal-800 text-teal-400" 
+          : "bg-rose-950/90 border-rose-800 text-rose-400"
+      }`;
+      
+      const icon = type === "success" 
+        ? `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>`
+        : `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>`;
+        
+      div.innerHTML = `${icon} <span>${msg}</span>`;
+      container.appendChild(div);
+      
+      setTimeout(() => {
+        div.style.opacity = '0';
+        div.style.transform = 'translateY(-12px)';
+        div.style.transition = 'all 0.3s ease';
+        setTimeout(() => div.remove(), 300);
+      }, 3500);
+    }
+
+    // SPA Router Setup
+    function navigate(path) {
+      window.history.pushState({}, '', path);
+      handleRouting();
+    }
+
+    window.addEventListener('popstate', handleRouting);
+
+    // Dynamic View Router
+    async function handleRouting() {
+      const path = window.location.pathname;
+      
+      // Hide all panels
+      document.querySelectorAll('.view-panel').forEach(el => el.classList.add('hidden'));
+      
+      // Verify user session
+      await checkUserSession();
+      
+      if (path === '/') {
+        document.getElementById('view-landing').classList.remove('hidden');
+        lucide.createIcons();
+      } else if (path === '/onboarding') {
+        if (user) {
+          // If already logged in, redirect directly to their dashboard
+          navigate(user.role === 'PITCHER' ? '/pitcher' : '/fetcher');
+          return;
+        }
+        document.getElementById('view-onboarding').classList.remove('hidden');
+        renderOnboardingWizard();
+      } else if (path === '/pitcher') {
+        if (!user || user.role !== 'PITCHER') {
+          navigate('/onboarding');
+          return;
+        }
+        document.getElementById('view-pitcher').classList.remove('hidden');
+        // Set sidebar info
+        document.getElementById('pitcher-email').innerText = user.email;
+        document.getElementById('pitcher-credits-side').innerText = `${user.credits} Credits`;
+        renderPitcherDashboard();
+      } else if (path === '/fetcher') {
+        if (!user || user.role !== 'FETCHER') {
+          navigate('/onboarding');
+          return;
+        }
+        document.getElementById('view-fetcher').classList.remove('hidden');
+        // Set sidebar info
+        document.getElementById('fetcher-email').innerText = user.email;
+        document.getElementById('fetcher-credits-side').innerText = `${user.credits} Credits`;
+        renderFetcherDashboard();
+      } else {
+        navigate('/');
+      }
+    }
+
+    // Intercept clicks on links
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('a');
+      if (target && target.getAttribute('href') && target.getAttribute('href').startsWith('/')) {
+        e.preventDefault();
+        navigate(target.getAttribute('href'));
+      }
+    });
+
+    // Session validator
+    async function checkUserSession() {
+      try {
+        const res = await fetch('/api/auth/me');
+        const data = await res.json();
+        if (data.authenticated) {
+          user = data.user;
+        } else {
+          user = null;
+        }
+      } catch (err) {
+        user = null;
+      }
+    }
+
+    async function logout() {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      user = null;
+      pushAlert("Cleared session successfully.");
+      navigate('/');
+    }
+
+    // Switch active workspace tabs
+    function switchTab(tabName) {
+      activeTab = tabName;
+      activeThreadId = null;
+      if (user.role === 'PITCHER') {
+        renderPitcherDashboard();
+      } else {
+        renderFetcherDashboard();
+      }
+    }
+
+
+    // ── 5. ONBOARDING WIZARD COMPONENT ──
+
+    function renderOnboardingWizard() {
+      const indicator = document.getElementById('onboarding-steps-indicator');
+      const container = document.getElementById('onboarding-form-container');
+      
+      const stepsOrder = ['EMAIL', 'OTP', 'ROLE', 'COMPLIANCE'];
+      
+      // Render steps progress indicators
+      indicator.innerHTML = stepsOrder.map((s, idx) => {
+        const currentIdx = stepsOrder.indexOf(onboardingStep);
+        const isActive = s === onboardingStep;
+        const isPast = idx < currentIdx;
+        
+        let label = 'Verify';
+        if (s === 'OTP') label = 'Security';
+        if (s === 'ROLE') label = 'Operational';
+        if (s === 'COMPLIANCE') label = 'Terms';
+        
+        return `
+          <div class="flex items-center gap-1.5 ${isActive ? 'text-purple-400' : isPast ? 'text-teal-400' : 'text-slate-600'}">
+            <span>${idx + 1}. ${label}</span>
+          </div>
+        `;
+      }).join('<span class="text-slate-800">/</span>');
+
+      // Render Active Form Block
+      if (onboardingStep === 'EMAIL') {
+        container.innerHTML = `
+          <form onsubmit="handleSendOTP(event)" class="space-y-6">
+            <div class="text-center md:text-left">
+              <h2 class="text-2xl font-black text-white flex items-center justify-center md:justify-start gap-2">
+                <i data-lucide="mail" class="w-6 h-6 text-purple-400"></i> Access Verification
+              </h2>
+              <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                Enter your business or personal email to begin your security verification. We will transmit a 4-digit code.
+              </p>
+            </div>
+            <div class="space-y-2">
+              <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Email Address</label>
+              <input 
+                type="email" 
+                required 
+                placeholder="e.g. founder@company.com" 
+                value="${onboardingEmailInput}" 
+                oninput="onboardingEmailInput = this.value"
+                class="w-full px-5 py-4 rounded-xl bg-slate-950/80 border border-slate-900 focus:border-purple-500 text-sm text-slate-100 outline-none transition-colors"
+              />
+            </div>
+            <button type="submit" ${loadingAction ? 'disabled' : ''} class="w-full py-4 font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 rounded-xl transition-all flex items-center justify-center gap-2">
+              ${loadingAction ? 'Sending Code...' : 'Send Verification Code <i data-lucide="chevron-right" class="w-4 h-4"></i>'}
+            </button>
+          </form>
+        `;
+      } 
+      else if (onboardingStep === 'OTP') {
+        container.innerHTML = `
+          <form onsubmit="handleVerifyOTP(event)" class="space-y-6">
+            <div class="text-center md:text-left">
+              <h2 class="text-2xl font-black text-white flex items-center justify-center md:justify-start gap-2">
+                <i data-lucide="key" class="w-6 h-6 text-purple-400"></i> Security Check
+              </h2>
+              <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                Enter the 4-digit security code dispatched to <strong class="text-slate-200">${onboardingEmailInput}</strong>.
+              </p>
+            </div>
+
+            <!-- Sandbox Dev Auto-fill indicator -->
+            ${onboardingDevOtp ? `
+              <div class="p-4 rounded-xl bg-purple-950/20 border border-purple-900/30 text-center space-y-1">
+                <span class="text-[9px] font-bold text-purple-400 tracking-widest uppercase block">⚡ Sandbox Simulation Active</span>
+                <span class="text-xs text-slate-300 block">To make testing easy, your OTP is: <strong class="text-amber-400 text-sm tracking-wider font-mono font-black">${onboardingDevOtp}</strong></span>
+                <button type="button" onclick="autoFillOTP('${onboardingDevOtp}')" class="text-[9px] font-bold text-teal-400 hover:text-teal-300 underline block mx-auto">Auto-fill security code</button>
+              </div>
+            ` : ''}
+
+            <div class="flex gap-4 justify-center py-2">
+              ${[0, 1, 2, 3].map(i => `
+                <input 
+                  type="text" 
+                  maxlength="1" 
+                  value="${onboardingOtpInput[i] || ''}" 
+                  oninput="onOtpDigitInput(${i}, this.value)" 
+                  onkeydown="onOtpDigitKeyDown(${i}, event)"
+                  id="otp-input-${i}"
+                  class="w-12 h-14 rounded-xl bg-slate-950/80 border border-slate-900 text-center font-bold text-lg text-white focus:border-purple-500 outline-none"
+                />
+              `).join('')}
+            </div>
+
+            <div class="flex flex-col gap-3">
+              <button type="submit" ${loadingAction ? 'disabled' : ''} class="w-full py-4 font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 rounded-xl transition-all flex items-center justify-center gap-2">
+                ${loadingAction ? 'Verifying...' : 'Verify Security Code'}
+              </button>
+              <button type="button" onclick="onboardingStep = 'EMAIL'; renderOnboardingWizard();" class="w-full py-3 text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors flex items-center justify-center gap-1">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Back to Email
+              </button>
+            </div>
+          </form>
+        `;
+        document.getElementById('otp-input-0').focus();
+      } 
+      else if (onboardingStep === 'ROLE') {
+        container.innerHTML = `
+          <div class="space-y-6">
+            <div class="text-center md:text-left">
+              <h2 class="text-2xl font-black text-white flex items-center justify-center md:justify-start gap-2">
+                <i data-lucide="user-check" class="w-6 h-6 text-purple-400"></i> Ecosystem Intent
+              </h2>
+              <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                Choose your role profile. This directs your specific workspace interface.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div onclick="selectOnboardingRole('PITCHER')" class="p-6 rounded-2xl border cursor-pointer transition-all text-center flex flex-col justify-between ${onboardingRoleInput === 'PITCHER' ? 'bg-purple-950/20 border-purple-500' : 'bg-slate-950/80 border-slate-900 hover:border-slate-800'}">
+                <div class="text-3xl mb-4">🚀</div>
+                <h3 class="font-extrabold text-sm text-slate-100">Founder</h3>
+                <p class="text-[10px] text-slate-400 mt-1">Register pitches & protect IP</p>
+              </div>
+
+              <div onclick="selectOnboardingRole('FETCHER')" class="p-6 rounded-2xl border cursor-pointer transition-all text-center flex flex-col justify-between ${onboardingRoleInput === 'FETCHER' ? 'bg-teal-950/20 border-teal-500' : 'bg-slate-950/80 border-slate-900 hover:border-slate-800'}">
+                <div class="text-3xl mb-4">🔍</div>
+                <h3 class="font-extrabold text-sm text-slate-100">Investor</h3>
+                <p class="text-[10px] text-slate-400 mt-1">Acquire assets & back pitches</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-3">
+              <button onclick="handleConfirmRole()" class="w-full py-4 font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 rounded-xl transition-all flex items-center justify-center gap-2">
+                Continue Configuration <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+              <button type="button" onclick="onboardingStep = 'OTP'; renderOnboardingWizard();" class="w-full py-3 text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors flex items-center justify-center gap-1">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Back to OTP Verification
+              </button>
+            </div>
+          </div>
+        `;
+      } 
+      else if (onboardingStep === 'COMPLIANCE') {
+        container.innerHTML = `
+          <div class="space-y-6">
+            <div class="text-center md:text-left">
+              <h2 class="text-2xl font-black text-white flex items-center justify-center md:justify-start gap-2">
+                <i data-lucide="shield" class="w-6 h-6 text-purple-400"></i> Mandatory Compliance
+              </h2>
+              <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                Carefully read the digital priority rights terms before finishing workspace setup.
+              </p>
+            </div>
+
+            <div class="h-44 p-4 rounded-xl border border-slate-900 bg-slate-950/60 overflow-y-auto text-[10px] text-slate-400 leading-relaxed space-y-4 scrollbar-thin">
+              <div>
+                <h4 class="font-extrabold text-slate-200 uppercase mb-1">1. IP Ownership Declaration</h4>
+                <p>By uploading solutions or concepts, you warrant that the content is your original creation. Copying third-party business models is strictly prohibited.</p>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-slate-200 uppercase mb-1">2. Cryptographic Digital Fingerprint</h4>
+                <p>PAI utilizes SHA-256 secure hash routines to build a stamp representing the exact state of your plan. This serves as proof in priority disputes.</p>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-slate-200 uppercase mb-1">3. Investor Credit Agreement</h4>
+                <p>Investors (Fetchers) agree that unlocking detailed startup content requires spending credits. This blocks automated scrapers.</p>
+              </div>
+            </div>
+
+            <label class="flex items-start gap-3 text-slate-400 text-[11px] leading-relaxed cursor-pointer select-none">
+              <input 
+                type="checkbox" 
+                ${onboardingAcceptedTC ? 'checked' : ''} 
+                onchange="onboardingAcceptedTC = this.checked"
+                class="mt-1 flex-shrink-0 accent-purple-500" 
+              />
+              <span>I have read and hereby accept the Digital IP Security framework and compliance terms.</span>
+            </label>
+
+            <div class="flex flex-col gap-3">
+              <button onclick="handleFinalizeCompliance()" class="w-full py-4 font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 rounded-xl transition-all flex items-center justify-center gap-2">
+                I Agree — Finalize Workspace Setup
+              </button>
+              <button type="button" onclick="onboardingStep = 'ROLE'; renderOnboardingWizard();" class="w-full py-3 text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors flex items-center justify-center gap-1">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Back to Role Selection
+              </button>
+            </div>
+          </div>
+        `;
+      }
+      lucide.createIcons();
+    }
+
+    async function handleSendOTP(e) {
+      e.preventDefault();
+      loadingAction = true;
+      renderOnboardingWizard();
+      
+      try {
+        const res = await fetch('/api/auth/send-otp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: onboardingEmailInput })
+        });
+        const data = await res.json();
+        
+        if (res.ok) {
+          onboardingStep = 'OTP';
+          onboardingDevOtp = data.devOtp || '';
+          pushAlert("Verification code sent successfully.");
+        } else {
+          pushAlert(data.detail || "Could not dispatch code.", "error");
+        }
+      } catch (err) {
+        pushAlert("Network error.", "error");
+      } finally {
+        loadingAction = false;
+        renderOnboardingWizard();
+      }
+    }
+
+    function onOtpDigitInput(idx, value) {
+      if (!value) return;
+      onboardingOtpInput[idx] = value.slice(-1);
+      
+      // Auto focus next input
+      if (idx < 3) {
+        const next = document.getElementById(`otp-input-${idx + 1}`);
+        if (next) next.focus();
+      }
+      renderOnboardingWizard();
+    }
+
+    function onOtpDigitKeyDown(idx, e) {
+      if (e.key === 'Backspace') {
+        if (!onboardingOtpInput[idx] && idx > 0) {
+          const prev = document.getElementById(`otp-input-${idx - 1}`);
+          if (prev) {
+            onboardingOtpInput[idx - 1] = '';
+            prev.focus();
+          }
+        } else {
+          onboardingOtpInput[idx] = '';
+        }
+        renderOnboardingWizard();
+      }
+    }
+
+    function autoFillOTP(code) {
+      onboardingOtpInput = code.split('');
+      renderOnboardingWizard();
+      document.getElementById('otp-input-3').focus();
+    }
+
+    async function handleVerifyOTP(e) {
+      e.preventDefault();
+      const code = onboardingOtpInput.join('');
+      if (code.length < 4) {
+        pushAlert("Enter all 4 digits.", "error");
+        return;
+      }
+      
+      loadingAction = true;
+      renderOnboardingWizard();
+      
+      try {
+        const res = await fetch('/api/auth/verify-otp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: onboardingEmailInput, otp: code })
+        });
+        const data = await res.json();
+        
+        if (res.ok) {
+          user = data.user;
+          pushAlert("Email verified successfully.");
+          if (data.isNewUser) {
+            onboardingStep = 'ROLE';
+          } else {
+            navigate(user.role === 'PITCHER' ? '/pitcher' : '/fetcher');
+          }
+        } else {
+          pushAlert(data.detail || "Invalid code.", "error");
+        }
+      } catch (err) {
+        pushAlert("Network error.", "error");
+      } finally {
+        loadingAction = false;
+        renderOnboardingWizard();
+      }
+    }
+
+    function selectOnboardingRole(role) {
+      onboardingRoleInput = role;
+      renderOnboardingWizard();
+    }
+
+    async function handleConfirmRole() {
+      try {
+        const res = await fetch('/api/auth/set-role', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ role: onboardingRoleInput })
+        });
+        const data = await res.json();
+        
+        if (res.ok) {
+          user = data.user;
+          onboardingStep = 'COMPLIANCE';
+          renderOnboardingWizard();
+        } else {
+          pushAlert("Could not set profile role.", "error");
+        }
+      } catch (err) {
+        pushAlert("Network error.", "error");
+      }
+    }
+
+    async function handleFinalizeCompliance() {
+      if (!onboardingAcceptedTC) {
+        pushAlert("Accept the compliance guidelines to finish.", "error");
+        return;
+      }
+      
+      // Session fully finalized! Redirect to dashboard
+      pushAlert("Operational workspace created!");
+      navigate(user.role === 'PITCHER' ? '/pitcher' : '/fetcher');
+    }
+
+
+    // ── 6. PITCHER DASHBOARD MODULE ──
+
+    // Pitch Vault submit form states
+    let pitchName = '';
+    let pitchSector = 'AI/ML';
+    let pitchStage = 'Idea';
+    let pitchDescription = '';
+    let pitchFunding = '';
+    let pitchTreatment = '';
+
+    async function renderPitcherDashboard() {
+      const container = document.getElementById('pitcher-workspace-container');
+      
+      // Update active nav button styling
+      document.querySelectorAll('#view-pitcher .nav-item-btn').forEach(btn => {
+        if (btn.getAttribute('data-tab') === activeTab) {
+          btn.classList.add('bg-purple-600', 'text-white');
+          btn.classList.remove('text-slate-400');
+        } else {
+          btn.classList.remove('bg-purple-600', 'text-white');
+          btn.classList.add('text-slate-400');
+        }
+      });
+
+      if (activeTab === 'OVERVIEW') {
+        // Fetch startups and build overview metrics
+        try {
+          const res = await fetch('/api/startups');
+          const data = await res.json();
+          startups = data.startups || [];
+        } catch (e) {}
+
+        const activeCount = startups.length;
+        const totalScore = startups.reduce((acc, s) => acc + (s.aiScore ? s.aiScore.score : 0), 0);
+        const avgScore = activeCount > 0 ? Math.round(totalScore / activeCount) : 0;
+
+        container.innerHTML = `
+          <div class="space-y-10 animate-fadeUp">
+            <div>
+              <h2 class="text-3xl font-black text-white">Good Morning, Founder 👋</h2>
+              <p class="text-slate-400 text-xs mt-1">Here is your digital IP vault metrics overview.</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-900">
+                <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Solutions Hashed</div>
+                <div class="text-3xl font-black text-purple-400 mt-2">${activeCount}</div>
+                <div class="text-[9px] text-slate-500 font-semibold mt-1">Cryptographically locked</div>
+              </div>
+              <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-900">
+                <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Average AI Rating</div>
+                <div class="text-3xl font-black text-teal-400 mt-2">${avgScore}%</div>
+                <div class="text-[9px] text-slate-500 font-semibold mt-1">Heuristics feasibility grade</div>
+              </div>
+              <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-900">
+                <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Wallet Ledger</div>
+                <div class="text-3xl font-black text-amber-400 mt-2">${user.credits}</div>
+                <div class="text-[9px] text-slate-500 font-semibold mt-1">Operational credits balance</div>
+              </div>
+              <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-900">
+                <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">KYC Status</div>
+                <div class="text-3xl font-black text-slate-200 mt-2">${user.kycStatus}</div>
+                <div class="text-[9px] text-slate-500 font-semibold mt-1">Verification parameters</div>
+              </div>
+            </div>
+
+            <!-- Interactive Security Box -->
+            <div class="p-6 rounded-2xl bg-gradient-to-r from-purple-950/20 to-teal-950/10 border border-purple-900/40 flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-purple-950 border border-purple-800 flex items-center justify-center text-xl flex-shrink-0 mt-0.5">🔒</div>
+              <div class="space-y-1">
+                <h4 class="text-xs font-bold text-purple-300 uppercase tracking-wider">SHA-256 IP Priority Protection</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  When you submit business concepts, our script generates an immutable SHA-256 fingerprint matching the exact description. This stands as cryptographic priority proof of concept before pitching to strategic capital.
+                </p>
+              </div>
+            </div>
+          </div>
+        `;
+      } 
+      else if (activeTab === 'REGISTER') {
+        container.innerHTML = `
+          <div class="space-y-8 max-w-5xl animate-fadeUp">
+            <div>
+              <h2 class="text-3xl font-black text-white">Vault New Pitch</h2>
+              <p class="text-slate-400 text-xs mt-1">Lock solutions, compute SHA-256 proof hashes, and evaluate feasibility.</p>
+            </div>
+
+            <form onsubmit="handleRegisterPitch(event)" class="space-y-6 bg-slate-900/20 border border-slate-900 p-8 rounded-3xl">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">Startup Pitch Name</label>
+                  <input type="text" placeholder="e.g. HealthBridge AI" value="${pitchName}" oninput="pitchName = this.value" required class="w-full px-4 py-3 text-xs bg-slate-950 border border-slate-900 rounded-xl focus:border-purple-500 outline-none text-slate-100" />
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">Target Ticket Requirement</label>
+                  <input type="text" placeholder="e.g. ₹1,50,000" value="${pitchFunding}" oninput="pitchFunding = this.value" required class="w-full px-4 py-3 text-xs bg-slate-950 border border-slate-900 rounded-xl focus:border-purple-500 outline-none text-slate-100" />
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">Sector Category</label>
+                  <select onchange="pitchSector = this.value" class="w-full px-4 py-3 text-xs bg-slate-950 border border-slate-900 rounded-xl focus:border-purple-500 outline-none text-slate-400 cursor-pointer">
+                    <option ${pitchSector === 'AI/ML' ? 'selected' : ''}>AI/ML</option>
+                    <option ${pitchSector === 'FinTech' ? 'selected' : ''}>FinTech</option>
+                    <option ${pitchSector === 'HealthTech' ? 'selected' : ''}>HealthTech</option>
+                    <option ${pitchSector === 'EdTech' ? 'selected' : ''}>EdTech</option>
+                    <option ${pitchSector === 'AgriTech' ? 'selected' : ''}>AgriTech</option>
+                  </select>
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">Development Stage</label>
+                  <select onchange="pitchStage = this.value" class="w-full px-4 py-3 text-xs bg-slate-950 border border-slate-900 rounded-xl focus:border-purple-500 outline-none text-slate-400 cursor-pointer">
+                    <option ${pitchStage === 'Idea' ? 'selected' : ''}>Idea</option>
+                    <option ${pitchStage === 'Prototype' ? 'selected' : ''}>Prototype</option>
+                    <option ${pitchStage === 'MVP' ? 'selected' : ''}>MVP</option>
+                    <option ${pitchStage === 'Revenue' ? 'selected' : ''}>Revenue</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">Problem Statement & Validation (Visible Preview)</label>
+                <textarea rows="4" placeholder="Describe the pain point, market opportunity, and target audience..." oninput="pitchDescription = this.value" required class="w-full p-4 text-xs bg-slate-950 border border-slate-900 rounded-xl focus:border-purple-500 outline-none text-slate-100">${pitchDescription}</textarea>
+              </div>
+
+              <div class="space-y-2">
+                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">Cryptographic Solution & Architecture (Redacted Vault Plan)</label>
+                <textarea rows="5" placeholder="Specify your core engineering setup, proprietary methods, or execution flow..." oninput="pitchTreatment = this.value" required class="w-full p-4 text-xs bg-slate-950 border border-slate-900 rounded-xl focus:border-purple-500 outline-none text-slate-100">${pitchTreatment}</textarea>
+              </div>
+
+              <button type="submit" ${loadingAction ? 'disabled' : ''} class="w-full py-4 font-bold text-slate-950 bg-purple-400 hover:bg-purple-300 rounded-xl transition-all flex items-center justify-center gap-2">
+                ${loadingAction ? 'Computing Proof hashes & registering...' : 'Compute SHA-256 Fingerprint & Vault Pitch'}
+              </button>
+            </form>
+          </div>
+        `;
+      } 
+      else if (activeTab === 'PITCHES') {
+        try {
+          const res = await fetch('/api/startups');
+          const data = await res.json();
+          startups = data.startups || [];
+        } catch (e) {}
+
+        container.innerHTML = `
+          <div class="space-y-8 animate-fadeUp">
+            <div>
+              <h2 class="text-3xl font-black text-white">Registered Pitches</h2>
+              <p class="text-slate-400 text-xs mt-1">Managevisibility, proof-of-concept vault keys, and deals states.</p>
+            </div>
+
+            ${startups.length === 0 ? `
+              <div class="p-16 rounded-3xl border border-dashed border-slate-900 text-center text-slate-600 text-xs">
+                No pitches registered in the SQLite vault.
+              </div>
+            ` : `
+              <div class="grid md:grid-cols-2 gap-6">
+                ${startups.map(s => `
+                  <div class="p-6 rounded-2xl bg-slate-900/30 border border-slate-900 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                      <div class="flex justify-between items-start">
+                        <h3 class="font-extrabold text-base text-white">${s.name}</h3>
+                        <label class="relative inline-flex items-center cursor-pointer select-none">
+                          <input type="checkbox" ${s.isPublic ? 'checked' : ''} onchange="togglePitchVisibility('${s.id}', this.checked)" class="sr-only peer" />
+                          <div class="w-9 h-5 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-purple-600"></div>
+                          <span class="ml-2 text-[10px] font-bold text-slate-500 uppercase">${s.isPublic ? 'Public' : 'Redacted'}</span>
+                        </label>
+                      </div>
+                      <div class="flex gap-2 flex-wrap">
+                        <span class="text-[8px] font-bold uppercase text-slate-400 bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-850">${s.sector}</span>
+                        <span class="text-[8px] font-bold uppercase text-slate-400 bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-850">${s.stage}</span>
+                        <span class="text-[8px] font-bold uppercase text-slate-400 bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-850">${s.fundingTarget}</span>
+                      </div>
+                      <p class="text-xs text-slate-400 leading-relaxed line-clamp-3">${s.description}</p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-950 space-y-2 text-[10px]">
+                      <div class="flex justify-between text-slate-500">
+                        <span>Proof Hash:</span>
+                        <span class="font-mono text-purple-400 truncate w-32 text-right">${s.ideaHash || 'computing...'}</span>
+                      </div>
+                      <div class="flex justify-between text-slate-500">
+                        <span>AI Grade score:</span>
+                        <strong class="text-teal-400">${s.aiScore ? s.aiScore.score : 'N/A'}% (${s.aiScore ? s.aiScore.grade : 'N/A'})</strong>
+                      </div>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            `}
+          </div>
+        `;
+      } 
+      else if (activeTab === 'AI_COACH') {
+        try {
+          const res = await fetch('/api/startups');
+          const data = await res.json();
+          startups = data.startups || [];
+        } catch (e) {}
+
+        container.innerHTML = `
+          <div class="space-y-8 animate-fadeUp">
+            <div>
+              <h2 class="text-3xl font-black text-white">AI Coach Workspace</h2>
+              <p class="text-slate-400 text-xs mt-1">Review qualitative analyses, strengths matrices, and gaps milestones.</p>
+            </div>
+
+            ${startups.length === 0 ? `
+              <div class="p-16 rounded-3xl border border-dashed border-slate-900 text-center text-slate-600 text-xs">
+                No active pitches found. Register an idea to calculate AI coaching insights.
+              </div>
+            ` : `
+              <div class="space-y-6">
+                ${startups.map(s => {
+                  const scoreObj = s.aiScore;
+                  if (!scoreObj) return '';
+                  return `
+                    <div class="p-8 rounded-3xl bg-slate-900/20 border border-slate-900 space-y-8">
+                      <div class="flex justify-between items-center pb-6 border-b border-slate-900">
+                        <div>
+                          <h3 class="font-extrabold text-lg text-white">${s.name} Insights</h3>
+                          <span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">${s.sector} · ${s.stage}</span>
+                        </div>
+                        <div class="text-center">
+                          <div class="text-3xl font-black text-purple-400">${scoreObj.score}%</div>
+                          <div class="text-[9px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">Feasibility Grade ${scoreObj.grade}</div>
+                        </div>
+                      </div>
+
+                      <div class="grid md:grid-cols-2 gap-8 text-xs">
+                        <div class="space-y-3">
+                          <h4 class="font-bold text-teal-400 uppercase tracking-wider text-[10px]">Identified Strengths</h4>
+                          <ul class="space-y-2">
+                            ${scoreObj.strengths.map(st => `<li class="flex gap-2 items-start text-slate-300">✓ <span>${st}</span></li>`).join('')}
+                          </ul>
+                        </div>
+                        <div class="space-y-3">
+                          <h4 class="font-bold text-rose-400 uppercase tracking-wider text-[10px]">Information Gaps & Risks</h4>
+                          <ul class="space-y-2">
+                            ${scoreObj.gaps.map(g => `<li class="flex gap-2 items-start text-slate-400">⚠️ <span>${g}</span></li>`).join('')}
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="p-6 rounded-2xl bg-slate-950/60 border border-slate-900 space-y-4">
+                        <h4 class="font-bold text-amber-400 uppercase tracking-wider text-[10px]">Actionable Optimization Roadmap</h4>
+                        <div class="space-y-3">
+                          ${scoreObj.roadmap.map((step, idx) => `
+                            <div class="flex gap-3 items-center text-xs">
+                              <span class="w-5 h-5 rounded-full bg-slate-900 border border-slate-800 text-[10px] font-black text-amber-400 flex items-center justify-center">${idx + 1}</span>
+                              <span class="text-slate-300">${step}</span>
+                            </div>
+                          `).join('')}
+                        </div>
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            `}
+          </div>
+        `;
+      } 
+      else if (activeTab === 'MESSAGES') {
+        await loadConversationsWorkspace(container);
+      } 
+      else if (activeTab === 'BILLING') {
+        container.innerHTML = `
+          <div class="space-y-10 max-w-5xl animate-fadeUp">
+            <div>
+              <h2 class="text-3xl font-black text-white">Upgrade Billing Tier</h2>
+              <p class="text-slate-400 text-xs mt-1">Configure premium subscriptions or recharge credits securely.</p>
+            </div>
+
+            <!-- Current Balance -->
+            <div class="p-6 rounded-2xl bg-slate-900/30 border border-slate-900 flex items-center justify-between">
+              <div>
+                <span class="text-[9px] text-slate-500 font-bold uppercase tracking-wider block">Wallet Balance</span>
+                <span class="text-lg font-black text-white mt-1 block">Standard Account</span>
+              </div>
+              <div class="flex items-center gap-2 text-purple-400 font-bold bg-purple-950/40 border border-purple-900/50 px-4 py-2.5 rounded-xl text-xs">
+                <i data-lucide="coins" class="w-4 h-4"></i>
+                <span>${user.credits} Credits Available</span>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl">
+              <!-- Standard Plan -->
+              <div class="p-8 rounded-3xl bg-slate-900/30 border border-slate-900 flex flex-col justify-between space-y-8">
+                <div class="space-y-4">
+                  <h3 class="font-extrabold text-lg text-white">Standard Recharge</h3>
+                  <div class="text-3xl font-black text-white">₹1,000</div>
+                  <p class="text-xs text-slate-400 leading-relaxed">Top up 100 operational credits to list pitches, view matches, and execute cryptographic hashing logs.</p>
+                </div>
+                <button onclick="openPaymentCheckout('PRO', 1000)" class="w-full py-3.5 font-bold text-slate-950 bg-purple-400 hover:bg-purple-300 rounded-xl transition-all">Buy 100 Credits</button>
+              </div>
+              <!-- Growth Plan -->
+              <div class="p-8 rounded-3xl bg-slate-900/30 border border-slate-900 flex flex-col justify-between space-y-8">
+                <div class="space-y-4">
+                  <h3 class="font-extrabold text-lg text-white">Growth Recharge</h3>
+                  <div class="text-3xl font-black text-white">₹1,000</div>
+                  <p class="text-xs text-slate-400 leading-relaxed">Top up 200 operational credits with priority matchmaking logs, AI insights grading triggers, and folder assets access.</p>
+                </div>
+                <button onclick="openPaymentCheckout('STARTUP', 1000)" class="w-full py-3.5 font-bold text-slate-950 bg-teal-400 hover:bg-teal-300 rounded-xl transition-all">Buy 200 Credits</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      lucide.createIcons();
+    }
+
+    async function handleRegisterPitch(e) {
+      e.preventDefault();
+      loadingAction = true;
+      renderPitcherDashboard();
+
+      try {
+        const res = await fetch('/api/startups', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: pitchName,
+            sector: pitchSector,
+            stage: pitchStage,
+            description: pitchDescription,
+            fundingTarget: pitchFunding,
+            treatmentPlan: pitchTreatment
+          })
+        });
+        const data = await res.json();
+        
+        if (res.ok) {
+          pushAlert("Startup solution secured in digital IP vault!");
+          // Clear inputs
+          pitchName = '';
+          pitchDescription = '';
+          pitchFunding = '';
+          pitchTreatment = '';
+          
+          activeTab = 'PITCHES';
+          renderPitcherDashboard();
+        } else {
+          pushAlert(data.detail || "Verification failed.", "error");
+        }
+      } catch (err) {
+        pushAlert("Network error.", "error");
+      } finally {
+        loadingAction = false;
+        renderPitcherDashboard();
+      }
+    }
+
+    async function togglePitchVisibility(id, checked) {
+      try {
+        const res = await fetch(`/api/startups/${id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ isPublic: checked })
+        });
+        if (res.ok) {
+          pushAlert(checked ? "Startup listing set to public." : "Startup listing redacted.");
+          renderPitcherDashboard();
+        }
+      } catch (e) {
+        pushAlert("Could not change visibility.", "error");
+      }
+    }
+
+
+    // ── 7. FETCHER DASHBOARD MODULE ──
+
+    async function renderFetcherDashboard() {
+      const container = document.getElementById('fetcher-workspace-container');
+      
+      // Update active nav button styling
+      document.querySelectorAll('#view-fetcher .nav-item-btn').forEach(btn => {
+        if (btn.getAttribute('data-tab') === activeTab) {
+          btn.classList.add('bg-teal-600', 'text-white');
+          btn.classList.remove('text-slate-400');
+        } else {
+          btn.classList.remove('bg-teal-600', 'text-white');
+          btn.classList.add('text-slate-400');
+        }
+      });
+
+      if (activeTab === 'OVERVIEW') {
+        try {
+          const res = await fetch('/api/startups');
+          const data = await res.json();
+          startups = data.startups || [];
+        } catch (e) {}
+
+        const starredCount = startups.filter(s => s.isWatchlisted).length;
+        const unlockedCount = startups.filter(s => s.isUnlocked).length;
+
+        container.innerHTML = `
+          <div class="space-y-10 animate-fadeUp">
+            <div>
+              <h2 class="text-3xl font-black text-white">Good Morning, Investor 👋</h2>
+              <p class="text-slate-400 text-xs mt-1">Here is your operational deal-flow tracking tracker.</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-900">
+                <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Startups Listed</div>
+                <div class="text-3xl font-black text-teal-400 mt-2">${startups.length}</div>
+                <div class="text-[9px] text-slate-500 font-semibold mt-1">Verified plans directory</div>
+              </div>
+              <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-900">
+                <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Starred Watchlist</div>
+                <div class="text-3xl font-black text-purple-400 mt-2">${starredCount}</div>
+                <div class="text-[9px] text-slate-500 font-semibold mt-1">Marked for review</div>
+              </div>
+              <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-900">
+                <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Unlocked Deal Rooms</div>
+                <div class="text-3xl font-black text-amber-400 mt-2">${unlockedCount}</div>
+                <div class="text-[9px] text-slate-500 font-semibold mt-1">Active direct contact channels</div>
+              </div>
+              <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-900">
+                <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Operational Credits</div>
+                <div class="text-3xl font-black text-slate-200 mt-2">${user.credits}</div>
+                <div class="text-[9px] text-slate-500 font-semibold mt-1">Available check balance</div>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-gradient-to-r from-teal-950/20 to-purple-950/10 border border-teal-900/40 flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-teal-950 border border-teal-800 flex items-center justify-center text-xl flex-shrink-0 mt-0.5">🔍</div>
+              <div class="space-y-1">
+                <h4 class="text-xs font-bold text-teal-300 uppercase tracking-wider">Confidentiality Gatekeeper</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  Founder contact emails and full solution blueprints are redacted by default. Access them by contacting the founder for **5 credits** from your ledger, which creates a joint due diligence Deal room.
+                </p>
+              </div>
+            </div>
+          </div>
+        `;
+      } 
+      else if (activeTab === 'DISCOVER') {
+        // Fetch startup feed with filters
+        let url = '/api/startups';
+        const params = [];
+        if (filterSector !== 'All sectors') params.push(`sector=${encodeURIComponent(filterSector)}`);
+        if (filterStage !== 'All stages') params.push(`stage=${encodeURIComponent(filterStage)}`);
+        if (params.length > 0) url += `?${params.join('&')}`;
+
+        try {
+          const res = await fetch(url);
+          const data = await res.json();
+          startups = data.startups || [];
+        } catch (e) {}
+
+        // Apply local keyword search filtering
+        const filtered = startups.filter(s => 
+          s.name.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+          s.description.toLowerCase().includes(searchKeyword.toLowerCase())
+        );
+
+        container.innerHTML = `
+          <div class="space-y-8 animate-fadeUp">
+            <div>
+              <h2 class="text-3xl font-black text-white">Discover Deal Flow</h2>
+              <p class="text-slate-400 text-xs mt-1">Browse, filter, and unlock verified, cryptographic startup solutions.</p>
+            </div>
+
+            <!-- Filters Bar -->
+            <div class="flex flex-col md:flex-row gap-4 justify-between items-center bg-slate-900/30 p-4 rounded-2xl border border-slate-900">
+              <div class="flex flex-1 gap-2 items-center w-full">
+                <i data-lucide="search" class="w-4 h-4 text-slate-500 ml-2"></i>
+                <input 
+                  type="text" 
+                  placeholder="Search by keywords, sector or name..." 
+                  value="${searchKeyword}" 
+                  oninput="searchKeyword = this.value; renderFetcherDashboard();"
+                  class="flex-1 bg-transparent px-2 py-1.5 text-xs text-slate-200 border-none outline-none" 
+                />
+              </div>
+
+              <div class="flex gap-3 w-full md:w-auto">
+                <select onchange="filterSector = this.value; renderFetcherDashboard();" class="px-3 py-2 text-xs bg-slate-950 border border-slate-900 rounded-xl outline-none text-slate-400 cursor-pointer w-full md:w-44">
+                  <option ${filterSector === 'All sectors' ? 'selected' : ''}>All sectors</option>
+                  <option ${filterSector === 'AI/ML' ? 'selected' : ''}>AI/ML</option>
+                  <option ${filterSector === 'FinTech' ? 'selected' : ''}>FinTech</option>
+                  <option ${filterSector === 'HealthTech' ? 'selected' : ''}>HealthTech</option>
+                  <option ${filterSector === 'EdTech' ? 'selected' : ''}>EdTech</option>
+                  <option ${filterSector === 'AgriTech' ? 'selected' : ''}>AgriTech</option>
+                </select>
+
+                <select onchange="filterStage = this.value; renderFetcherDashboard();" class="px-3 py-2 text-xs bg-slate-950 border border-slate-900 rounded-xl outline-none text-slate-400 cursor-pointer w-full md:w-36">
+                  <option ${filterStage === 'All stages' ? 'selected' : ''}>All stages</option>
+                  <option ${filterStage === 'Idea' ? 'selected' : ''}>Idea</option>
+                  <option ${filterStage === 'Prototype' ? 'selected' : ''}>Prototype</option>
+                  <option ${filterStage === 'MVP' ? 'selected' : ''}>MVP</option>
+                  <option ${filterStage === 'Revenue' ? 'selected' : ''}>Revenue</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Grids -->
+            ${filtered.length === 0 ? `
+              <div class="p-16 rounded-3xl border border-dashed border-slate-900 text-center text-slate-600 text-xs">
+                No matching verified startups listed in the directory.
+              </div>
+            ` : `
+              <div class="grid md:grid-cols-2 gap-6">
+                ${filtered.map(s => `
+                  <div onclick="openStartupDetailsModal('${s.id}')" class="p-6 rounded-2xl bg-slate-900/30 border border-slate-900 hover:border-slate-800 transition-all cursor-pointer flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                      <div class="flex justify-between items-start">
+                        <h3 class="font-extrabold text-base text-white">${s.name}</h3>
+                        <button onclick="toggleWatchlist(event, '${s.id}')" class="p-1.5 rounded-lg hover:bg-slate-950 transition-colors">
+                          <i data-lucide="star" class="w-4.5 h-4.5 ${s.isWatchlisted ? 'text-amber-400 fill-amber-400' : 'text-slate-600'}"></i>
+                        </button>
+                      </div>
+                      <div class="flex gap-2 flex-wrap">
+                        <span class="text-[8px] font-bold uppercase text-slate-400 bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-850">${s.sector}</span>
+                        <span class="text-[8px] font-bold uppercase text-slate-400 bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-850">${s.stage}</span>
+                      </div>
+                      <p class="text-xs text-slate-400 leading-relaxed line-clamp-3">${s.description}</p>
+                    </div>
+                    <div class="flex items-center gap-2 border-t border-slate-950 pt-4 text-[10px] text-slate-500">
+                      ${s.isUnlocked ? `
+                        <span class="text-teal-400 font-extrabold flex items-center gap-1">
+                          <i data-lucide="unlock" class="w-3.5 h-3.5"></i> Direct Contact Active (${s.founderEmail})
+                        </span>
+                      ` : `
+                        <span class="font-bold flex items-center gap-1">
+                          <i data-lucide="lock" class="w-3.5 h-3.5"></i> Details locked (requires 5 credits)
+                        </span>
+                      `}
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            `}
+          </div>
+        `;
+      } 
+      else if (activeTab === 'WATCHLIST') {
+        try {
+          const res = await fetch('/api/startups');
+          const data = await res.json();
+          startups = data.startups || [];
+        } catch (e) {}
+
+        const starred = startups.filter(s => s.isWatchlisted);
+
+        container.innerHTML = `
+          <div class="space-y-8 animate-fadeUp">
+            <div>
+              <h2 class="text-3xl font-black text-white">My Watchlist</h2>
+              <p class="text-slate-400 text-xs mt-1">Startups you marked for monitoring.</p>
+            </div>
+
+            ${starred.length === 0 ? `
+              <div class="p-16 rounded-3xl border border-dashed border-slate-900 text-center text-slate-600 text-xs">
+                Your watchlist is currently empty. Star startups in the Discover Flow to list them here.
+              </div>
+            ` : `
+              <div class="grid md:grid-cols-2 gap-6">
+                ${starred.map(s => `
+                  <div onclick="openStartupDetailsModal('${s.id}')" class="p-6 rounded-2xl bg-slate-900/30 border border-slate-900 cursor-pointer flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                      <div class="flex justify-between items-start">
+                        <h3 class="font-extrabold text-base text-white">${s.name}</h3>
+                        <button onclick="toggleWatchlist(event, '${s.id}')" class="p-1.5 rounded-lg hover:bg-slate-950">
+                          <i data-lucide="star" class="w-4.5 h-4.5 text-amber-400 fill-amber-400"></i>
+                        </button>
+                      </div>
+                      <p class="text-xs text-slate-400 line-clamp-2">${s.description}</p>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            `}
+          </div>
+        `;
+      } 
+      else if (activeTab === 'INSIGHTS') {
+        container.innerHTML = `
+          <div class="space-y-10 max-w-5xl animate-fadeUp">
+            <div>
+              <h2 class="text-3xl font-black text-white">Market Insights & Recovery</h2>
+              <p class="text-slate-400 text-xs mt-1">Review active sector distributions and acquisition assets of sunset startups.</p>
+            </div>
+
+            <!-- Charts/Report Cards -->
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="p-6 rounded-3xl bg-slate-900/40 border border-slate-900 space-y-4">
+                <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Sector Share Distributions</h4>
+                <div class="space-y-3">
+                  ${[
+                    { name: 'AI & Machine Learning', percent: 38, count: 18, color: 'bg-purple-500' },
+                    { name: 'FinTech Applications', percent: 22, count: 11, color: 'bg-teal-500' },
+                    { name: 'HealthTech Systems', percent: 18, count: 9, color: 'bg-amber-500' },
+                    { name: 'EdTech Tools', percent: 12, count: 6, color: 'bg-indigo-500' },
+                    { name: 'AgriTech Products', percent: 10, count: 5, color: 'bg-slate-500' }
+                  ].map(s => `
+                    <div class="space-y-1">
+                      <div class="flex justify-between text-[10px] font-semibold text-slate-400">
+                        <span>${s.name}</span>
+                        <span>${s.percent}% (${s.count} listed)</span>
+                      </div>
+                      <div class="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden">
+                        <div class="h-full ${s.color}" style="width: ${s.percent}%"></div>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="p-6 rounded-3xl bg-slate-900/40 border border-slate-900 flex flex-col justify-between">
+                <div class="space-y-3">
+                  <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Failed Startup Recovery Board</h4>
+                  <p class="text-xs text-slate-400 leading-relaxed">
+                    Access secondary IP asset acquisitions (software repos, pre-trained model weights, design CADs) listed by sunset founders. Acquire verified boilerplate structures to accelerate active development timelines.
+                  </p>
+                </div>
+                <div class="text-[10px] text-teal-400 font-bold border border-teal-900/50 bg-teal-950/20 p-3 rounded-xl">
+                  💡 Accelerate timeline: Skip building standard configurations by bidding on verified IP repository buyout lots.
+                </div>
+              </div>
+            </div>
+
+            <!-- Recovery list -->
+            <div class="space-y-4">
+              <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Available IP Asset Lots</h3>
+              <div class="space-y-3">
+                ${[
+                  { name: 'PayShield API Core', type: 'FinTech Gateway', desc: 'Secure payment orchestration engine with built-in fraud prevention rules.', size: '23.4k LOC', cost: '15 credits' },
+                  { name: 'CropVision ML Weight Maps', type: 'AgriTech Model', desc: 'Pathogen image library (80k images) with pre-trained ResNet-50 weights.', size: '4.2 GB Dataset', cost: '25 credits' },
+                  { name: 'AeroDent CAD Models', type: 'HealthTech Cad', desc: '3D CAD assemblies and testing parameters for manufacturing aligners.', size: '12 CAD Files', cost: '30 credits' }
+                ].map(asset => `
+                  <div class="p-5 rounded-2xl bg-slate-900/20 border border-slate-950 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div class="space-y-1">
+                      <div class="flex items-center gap-2">
+                        <h4 class="text-xs font-bold text-slate-200">${asset.name}</h4>
+                        <span class="px-2 py-0.5 text-[8px] bg-slate-900 text-slate-400 font-bold border border-slate-800 rounded-lg">${asset.type}</span>
+                      </div>
+                      <p class="text-[10px] text-slate-500 leading-relaxed">${asset.desc}</p>
+                      <p class="text-[9px] text-purple-400 font-semibold">Lot Size: ${asset.size}</p>
+                    </div>
+                    <button onclick="alert('Asset lot bidding is coming soon. Please contact administrator.')" class="px-4 py-2 bg-slate-950 hover:bg-slate-900 border border-slate-900 hover:border-slate-800 text-[10px] font-bold text-slate-300 rounded-xl whitespace-nowrap self-stretch md:self-auto text-center">
+                      Bid (${asset.cost})
+                    </button>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+      } 
+      else if (activeTab === 'MESSAGES') {
+        await loadConversationsWorkspace(container);
+      } 
+      else if (activeTab === 'BILLING') {
+        container.innerHTML = `
+          <div class="space-y-10 max-w-5xl animate-fadeUp">
+            <div>
+              <h2 class="text-3xl font-black text-white">Recharge Credits</h2>
+              <p class="text-slate-400 text-xs mt-1">Configure premium subscriptions or top up credits securely.</p>
+            </div>
+
+            <!-- Current Balance -->
+            <div class="p-6 rounded-2xl bg-slate-900/30 border border-slate-900 flex items-center justify-between">
+              <div>
+                <span class="text-[9px] text-slate-500 font-bold uppercase tracking-wider block">Wallet Balance</span>
+                <span id="fetcher-tier" class="text-lg font-black text-white mt-1 block">Standard Account</span>
+              </div>
+              <div class="flex items-center gap-2 text-teal-400 font-bold bg-teal-950/40 border border-teal-900/50 px-4 py-2.5 rounded-xl text-xs">
+                <i data-lucide="coins" class="w-4 h-4"></i>
+                <span>${user.credits} Credits Available</span>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl">
+              <!-- Standard Plan -->
+              <div class="p-8 rounded-3xl bg-slate-900/30 border border-slate-900 flex flex-col justify-between space-y-8">
+                <div class="space-y-4">
+                  <h3 class="font-extrabold text-lg text-white">Standard Recharge</h3>
+                  <div class="text-3xl font-black text-white">₹1,000</div>
+                  <p class="text-xs text-slate-400 leading-relaxed">Top up 100 operational credits. Contact up to 20 founders and unlock detailed templates.</p>
+                </div>
+                <button onclick="openPaymentCheckout('PRO', 1000)" class="w-full py-3.5 font-bold text-slate-950 bg-teal-400 hover:bg-teal-300 rounded-xl transition-all">Buy 100 Credits</button>
+              </div>
+              <!-- Growth Plan -->
+              <div class="p-8 rounded-3xl bg-slate-900/30 border border-slate-900 flex flex-col justify-between space-y-8">
+                <div class="space-y-4">
+                  <h3 class="font-extrabold text-lg text-white">Growth Recharge</h3>
+                  <div class="text-3xl font-black text-white">₹1,000</div>
+                  <p class="text-xs text-slate-400 leading-relaxed">Top up 200 operational credits. Includes detailed secondary IP recover lots bidding clearance.</p>
+                </div>
+                <button onclick="openPaymentCheckout('STARTUP', 1000)" class="w-full py-3.5 font-bold text-slate-950 bg-purple-400 hover:bg-purple-300 rounded-xl transition-all">Buy 200 Credits</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      lucide.createIcons();
+    }
+
+    async function toggleWatchlist(e, startupId) {
+      e.stopPropagation();
+      try {
+        const res = await fetch('/api/startups/watchlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ startupId })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          pushAlert(data.watchlisted ? "Startup starred to watchlist." : "Startup removed from watchlist.");
+          renderFetcherDashboard();
+        }
+      } catch (err) {
+        pushAlert("Watchlist toggle failed.", "error");
+      }
+    }
+
+
+    // ── 8. SECURE CHAT WORKSPACE CORE ──
+
+    async function loadConversationsWorkspace(container) {
+      // Fetch thread histories
+      try {
+        const res = await fetch('/api/messages');
+        const data = await res.json();
+        conversations = data.threads || [];
+      } catch (e) {}
+
+      container.innerHTML = `
+        <div class="space-y-8 h-[calc(100vh-140px)] flex flex-col justify-between animate-fadeUp">
+          <div>
+            <h2 class="text-3xl font-black text-white">Deal Chatrooms</h2>
+            <p class="text-slate-400 text-xs mt-1">Direct verification dialogs and due diligence logs.</p>
+          </div>
+
+          <div class="flex-1 grid md:grid-cols-12 gap-6 min-h-0">
+            <!-- Threads List -->
+            <div class="md:col-span-4 rounded-2xl bg-slate-900/30 border border-slate-900 p-4 space-y-3 overflow-y-auto max-h-[480px] scrollbar-thin">
+              <div class="text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-2">Active Conversations</div>
+              
+              ${conversations.length === 0 ? `
+                <div class="p-8 text-center text-xs text-slate-600">No active deal rooms.</div>
+              ` : conversations.map(thread => `
+                <div onclick="selectMessageThread('${thread.id}')" class="p-4 rounded-xl border cursor-pointer transition-colors ${activeThreadId === thread.id ? 'bg-teal-950/20 border-teal-500' : 'bg-slate-950/80 border-slate-950 hover:border-slate-850'}">
+                  <h4 class="text-xs font-bold text-slate-200 truncate">${thread.otherUser.email}</h4>
+                  <p class="text-[9px] text-slate-400 mt-1 uppercase font-semibold">Startup: ${thread.startupName}</p>
+                  ${thread.lastMessage ? `
+                    <p class="text-[10px] text-slate-500 truncate mt-2">${thread.lastMessage.content}</p>
+                  ` : ''}
+                </div>
+              `).join('')}
+            </div>
+
+            <!-- Messages Window -->
+            <div class="md:col-span-8 rounded-2xl bg-slate-900/20 border border-slate-900 p-6 flex flex-col justify-between min-h-[360px] max-h-[480px]">
+              ${activeThreadId ? `
+                <div id="chat-messages-history" class="flex-1 overflow-y-auto space-y-4 pr-2 mb-4 scrollbar-thin">
+                  <!-- Populated dynamically via JS -->
+                </div>
+
+                <form onsubmit="handlePostMessage(event)" class="flex gap-3 border-t border-slate-950 pt-4">
+                  <input 
+                    type="text" 
+                    placeholder="Type message response..." 
+                    value="${activeNewMsgText}" 
+                    oninput="activeNewMsgText = this.value"
+                    required
+                    class="flex-1 px-4 py-3 text-xs bg-slate-950 border border-slate-900 rounded-xl focus:border-teal-500 outline-none text-slate-100" 
+                  />
+                  <button type="submit" class="p-3 bg-teal-600 hover:bg-teal-500 rounded-xl text-white">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                  </button>
+                </form>
+              ` : `
+                <div class="flex-1 flex flex-col justify-center items-center gap-2 text-slate-600 text-xs">
+                  <i data-lucide="message-square" class="w-8 h-8 text-slate-800"></i>
+                  Select a deal room conversation thread.
+                </div>
+              `}
+            </div>
+          </div>
+        </div>
+      `;
+      
+      if (activeThreadId) {
+        await fetchThreadMessages();
+      }
+    }
+
+    async function selectMessageThread(threadId) {
+      activeThreadId = threadId;
+      activeNewMsgText = '';
+      if (user.role === 'PITCHER') {
+        await renderPitcherDashboard();
+      } else {
+        await renderFetcherDashboard();
+      }
+    }
+
+    async function fetchThreadMessages() {
+      try {
+        const res = await fetch(`/api/messages?threadId=${activeThreadId}`);
+        const data = await res.json();
+        messages = data.messages || [];
+      } catch (e) {}
+
+      const chatHistory = document.getElementById('chat-messages-history');
+      if (chatHistory) {
+        chatHistory.innerHTML = messages.map(msg => {
+          const isMe = msg.senderId === user.id;
+          return `
+            <div class="flex flex-col max-w-[80%] ${isMe ? 'ml-auto items-end' : 'mr-auto items-start'}">
+              <span class="text-[8px] text-slate-500 font-bold mb-1">${msg.sender.email}</span>
+              <div class="p-3.5 rounded-2xl text-xs leading-relaxed ${isMe ? 'bg-teal-600 text-white rounded-tr-none' : 'bg-slate-900 text-slate-200 border border-slate-950 rounded-tl-none'}">
+                ${msg.content}
+              </div>
+            </div>
+          `;
+        }).join('');
+        // Scroll to bottom
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+      }
+    }
+
+    async function handlePostMessage(e) {
+      e.preventDefault();
+      if (!activeThreadId || !activeNewMsgText.trim()) return;
+
+      try {
+        const res = await fetch('/api/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ threadId: activeThreadId, content: activeNewMsgText })
+        });
+        if (res.ok) {
+          activeNewMsgText = '';
+          await fetchThreadMessages();
+          if (user.role === 'PITCHER') {
+            renderPitcherDashboard();
+          } else {
+            renderFetcherDashboard();
+          }
+        }
+      } catch (err) {
+        pushAlert("Failed to send message.", "error");
+      }
+    }
+
+
+    // ── 9. MODALS WORKSPACE (DETAILS & CHECKOUTS) ──
+
+    async function openStartupDetailsModal(startupId) {
+      try {
+        const res = await fetch(`/api/startups/${startupId}`);
+        const data = await res.json();
+        selectedStartup = data.startup;
+      } catch (e) {
+        pushAlert("Failed to fetch detailed info.", "error");
+        return;
+      }
+
+      const modal = document.getElementById('startup-detail-modal');
+      modal.innerHTML = `
+        <div class="w-full max-w-2xl p-8 rounded-3xl bg-slate-900 border border-slate-800 space-y-6 shadow-2xl max-h-[90%] overflow-y-auto animate-fadeUp">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-xl font-black text-white">${selectedStartup.name}</h3>
+              <div class="flex gap-2 mt-2">
+                <span class="text-[8px] font-bold uppercase text-slate-400 bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-850">${selectedStartup.sector}</span>
+                <span class="text-[8px] font-bold uppercase text-slate-400 bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-850">${selectedStartup.stage}</span>
+              </div>
+            </div>
+            <button onclick="toggleWatchlistModal(event, '${selectedStartup.id}')" class="p-2 bg-slate-950 border border-slate-850 hover:border-slate-700 rounded-xl">
+              <i data-lucide="star" class="w-4 h-4 ${selectedStartup.isWatchlisted ? 'text-amber-400 fill-amber-400' : 'text-slate-500'}"></i>
+            </button>
+          </div>
+
+          <!-- Quick Metrics -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-xl bg-slate-950/40 border border-slate-950 text-xs">
+            <div>
+              <span class="text-slate-500 block font-semibold text-[8px] uppercase">HQ Location</span>
+              <span class="text-white font-bold">Bangalore, IN</span>
+            </div>
+            <div>
+              <span class="text-slate-500 block font-semibold text-[8px] uppercase">Funding Requirement</span>
+              <span class="text-teal-400 font-bold">${selectedStartup.fundingTarget}</span>
+            </div>
+            <div>
+              <span class="text-slate-500 block font-semibold text-[8px] uppercase">Contact Vault</span>
+              <span class="font-bold">${selectedStartup.isUnlocked ? 'Unlocked' : 'Locked'}</span>
+            </div>
+            <div>
+              <span class="text-slate-500 block font-semibold text-[8px] uppercase">IP Hash Fingerprint</span>
+              <span class="text-purple-400 font-mono truncate block font-bold">${selectedStartup.isUnlocked ? 'VERIFIED' : '••••••••••'}</span>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Problem Statement</h4>
+            <p class="text-xs text-slate-300 leading-relaxed bg-slate-950/20 border border-slate-950 p-4 rounded-xl">
+              ${selectedStartup.description}
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Solution Blueprint</h4>
+              ${!selectedStartup.isUnlocked ? `<span class="text-[8px] font-bold text-amber-500 bg-amber-950/60 border border-amber-900/60 px-2 py-0.5 rounded-full uppercase">Locked</span>` : ''}
+            </div>
+            <div class="p-4 rounded-xl border text-xs leading-relaxed ${selectedStartup.isUnlocked ? 'bg-slate-950/40 border-slate-950 text-slate-300' : 'bg-slate-950/80 border-slate-950 text-slate-500 select-none blur-sm'}">
+              ${selectedStartup.isUnlocked ? selectedStartup.treatmentPlan : '🔒 This content is locked. Spend 5 credits to unlock the treatment plan and direct contacts.'}
+            </div>
+          </div>
+
+          ${selectedStartup.isUnlocked ? `
+            <div class="space-y-2">
+              <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Founder Contact Details</h4>
+              <div class="p-4 rounded-xl bg-teal-950/20 border border-teal-900/30 text-xs text-teal-300 font-bold">
+                Direct Email: ${selectedStartup.founderEmail}
+              </div>
+            </div>
+            ${selectedStartup.ideaHash ? `
+              <div class="space-y-2">
+                <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">SHA-256 IP Vault Key</h4>
+                <div class="p-4 rounded-xl bg-purple-950/20 border border-purple-900/30 text-xs text-purple-300 font-mono select-all">
+                  Proof Fingerprint: ${selectedStartup.ideaHash}
+                </div>
+              </div>
+            ` : ''}
+          ` : ''}
+
+          <div class="flex gap-3 border-t border-slate-950 pt-4">
+            <button onclick="closeStartupDetailsModal()" class="flex-1 py-3 text-xs font-bold text-slate-400 hover:text-slate-200 border border-slate-800 rounded-xl hover:bg-slate-950">
+              Close Preview
+            </button>
+            
+            ${!selectedStartup.isUnlocked ? `
+              <button onclick="handleUnlockDeal('${selectedStartup.id}')" class="flex-1 py-3 text-xs font-bold text-slate-950 bg-teal-400 hover:bg-teal-300 rounded-xl flex items-center justify-center gap-1.5">
+                <i data-lucide="coins" class="w-4 h-4 text-slate-950"></i> Unlock Contacts (5 credits)
+              </button>
+            ` : `
+              <button onclick="closeStartupDetailsModal(); switchTab('MESSAGES'); selectMessageThreadFromStartup('${selectedStartup.name}')" class="flex-1 py-3 text-xs font-bold text-slate-950 bg-teal-400 hover:bg-teal-300 rounded-xl flex items-center justify-center gap-1.5">
+                <i data-lucide="message-square" class="w-4 h-4 text-slate-950"></i> Open Chatroom
+              </button>
+            `}
+          </div>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeStartupDetailsModal() {
+      document.getElementById('startup-detail-modal').classList.add('hidden');
+    }
+
+    async function toggleWatchlistModal(e, startupId) {
+      await toggleWatchlist(e, startupId);
+      // Re-open details to sync changes
+      await openStartupDetailsModal(startupId);
+    }
+
+    async function handleUnlockDeal(startupId) {
+      try {
+        const res = await fetch('/api/startups/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ startupId })
+        });
+        const data = await res.json();
+        
+        if (res.ok) {
+          pushAlert("Founder details unlocked! Deal room chat open.");
+          closeStartupDetailsModal();
+          
+          // Re-fetch user session to update sidebar credits balance
+          await checkUserSession();
+          
+          activeTab = 'MESSAGES';
+          activeThreadId = data.threadId;
+          
+          if (user.role === 'PITCHER') {
+            renderPitcherDashboard();
+          } else {
+            renderFetcherDashboard();
+          }
+        } else {
+          pushAlert(data.detail || "Verification failed.", "error");
+        }
+      } catch (err) {
+        pushAlert("Network transaction error.", "error");
+      }
+    }
+
+    function selectMessageThreadFromStartup(startupName) {
+      // Find active conversation that matches
+      const match = conversations.find(c => c.startupName === startupName);
+      if (match) {
+        selectMessageThread(match.id);
+      }
+    }
+
+    // Checkout payment logic
+    let checkoutSelectedTier = '';
+    
+    function openPaymentCheckout(tier, amount) {
+      checkoutSelectedTier = tier;
+      const modal = document.getElementById('checkout-payment-modal');
+      
+      modal.innerHTML = `
+        <div class="w-full max-w-md p-8 rounded-3xl bg-slate-900 border border-slate-800 space-y-6 shadow-2xl animate-fadeUp">
+          <div class="text-center">
+            <h3 class="text-lg font-black text-white">Simulated Payment Checkout</h3>
+            <p class="text-xs text-slate-400 mt-1">PAI Integration Sandbox Node</p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-950 text-xs">
+            <div class="flex justify-between text-slate-400">
+              <span>Package tier:</span>
+              <strong class="text-white">${tier === 'PRO' ? 'Standard (100 creds)' : 'Growth (200 creds)'}</strong>
+            </div>
+            <div class="flex justify-between text-slate-400 mt-2">
+              <span>Total Invoice:</span>
+              <strong class="text-teal-400">₹${amount}</strong>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="space-y-1">
+              <label class="block text-[9px] font-bold text-slate-500 uppercase tracking-wide">Card Number</label>
+              <input type="text" value="4111 •••• •••• 1111" disabled class="w-full px-4 py-3 text-xs bg-slate-950 border border-slate-950 rounded-xl text-slate-500 outline-none" />
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label class="block text-[9px] font-bold text-slate-500 uppercase tracking-wide">CVV</label>
+                <input type="text" value="123" disabled class="w-full px-4 py-3 text-xs bg-slate-950 border border-slate-950 rounded-xl text-slate-500" />
+              </div>
+              <div class="space-y-1">
+                <label class="block text-[9px] font-bold text-slate-500 uppercase tracking-wide">Expiry</label>
+                <input type="text" value="12/28" disabled class="w-full px-4 py-3 text-xs bg-slate-950 border border-slate-950 rounded-xl text-slate-500" />
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <button onclick="closePaymentCheckout()" class="flex-1 py-3 text-xs font-bold text-slate-400 hover:text-slate-200 border border-slate-800 rounded-xl hover:bg-slate-900">
+              Cancel
+            </button>
+            <button onclick="authorizePayment()" class="flex-1 py-3 text-xs font-bold text-slate-950 bg-teal-400 hover:bg-teal-300 rounded-xl">
+              Authorize Recharge
+            </button>
+          </div>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closePaymentCheckout() {
+      document.getElementById('checkout-payment-modal').classList.add('hidden');
+    }
+
+    async function authorizePayment() {
+      try {
+        const res = await fetch('/api/subscriptions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tier: checkoutSelectedTier })
+        });
+        
+        if (res.ok) {
+          pushAlert("Payment approved! Credit ledger updated.");
+          closePaymentCheckout();
+          
+          // Re-fetch user session and update dashboard
+          await checkUserSession();
+          
+          if (user.role === 'PITCHER') {
+            document.getElementById('pitcher-credits-side').innerText = `${user.credits} Credits`;
+            renderPitcherDashboard();
+          } else {
+            document.getElementById('fetcher-credits-side').innerText = `${user.credits} Credits`;
+            renderFetcherDashboard();
+          }
+        } else {
+          pushAlert("Payment rejected by sandbox.", "error");
+        }
+      } catch (err) {
+        pushAlert("Transaction error.", "error");
+      }
+    }
+
+
+    // ── INITIALIZATION MOUNT ──
+    document.addEventListener("DOMContentLoaded", () => {
+      handleRouting();
+    });
+  </script>
+</body>
+</html>
